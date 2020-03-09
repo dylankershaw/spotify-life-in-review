@@ -30,8 +30,8 @@ const Home = () => {
         {!!artists.length && (
           <>
             <select value={selectedArtist} onChange={e => setSelectedArtist(e.target.value)}>
-              {artists.map(a => (
-                <option key={a} value={a}>
+              {artists.map((a, i) => (
+                <option key={i} value={a}>
                   {a}
                 </option>
               ))}
