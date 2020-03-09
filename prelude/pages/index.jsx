@@ -1,12 +1,21 @@
 import Head from 'next/head';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import FileUploader from '../components/FileUploader';
 import Chart from '../components/Chart';
 
 const Home = () => {
   const [songData, setSongData] = useState([]);
-  const [artist, setArtist] = useState('Above & Beyond');
+  const [artists, setArtists] = useState([]);
+  const [selectedArtist, setSelectedArtist] = useState(artists[0]);
+
+  useEffect(() => {
+    const newArtistList = [];
+    songData.map(({master_metadata_album_artist_name: artist}) => {
+      if (!newArtistList.includes(artist)) newArtistList.push(artist);
+    });
+    setArtists(newArtistList.sort());
+  }, [songData]);
 
   return (
     <div>
@@ -17,10 +26,13 @@ const Home = () => {
       </Head>
 
       <main>
-        {/* TODO: make this a select dropdown */}
-        <input value={artist} onChange={e => setArtist(e.target.value)} />
+        <select value={selectedArtist} onChange={e => setSelectedArtist(e.target.value)}>
+          {artists.map(a => (
+            <option value={a}>{a}</option>
+          ))}
+        </select>
         <FileUploader setSongData={setSongData} />
-        <Chart songData={songData} artist={artist} />
+        <Chart songData={songData} selectedArtist={selectedArtist} />
       </main>
 
       <footer></footer>

@@ -1,15 +1,15 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Chart from 'chart.js';
 
-export default ({songData, artist}) => {
+export default ({songData, selectedArtist}) => {
   const [chartData, setChartData] = useState([]);
   const ref = useRef(null);
 
   useEffect(() => {
-    if (!artist) return setChartData([]);
+    if (!selectedArtist) return setChartData([]);
 
     const songsWithArtist = songData.filter(s =>
-      s.master_metadata_album_artist_name?.includes(artist)
+      s.master_metadata_album_artist_name?.includes(selectedArtist)
     );
 
     const data = songsWithArtist.reduce((acc, cur) => {
@@ -18,7 +18,7 @@ export default ({songData, artist}) => {
     }, {});
 
     setChartData(data);
-  }, [songData, artist]);
+  }, [songData, selectedArtist]);
 
   useEffect(() => {
     const myChartRef = ref.current.getContext('2d');
