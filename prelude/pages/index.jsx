@@ -26,13 +26,19 @@ const Home = () => {
       </Head>
 
       <main>
-        <select value={selectedArtist} onChange={e => setSelectedArtist(e.target.value)}>
-          {artists.map(a => (
-            <option value={a}>{a}</option>
-          ))}
-        </select>
         <FileUploader setSongData={setSongData} />
-        <Chart songData={songData} selectedArtist={selectedArtist} />
+        {!!artists.length && (
+          <>
+            <select value={selectedArtist} onChange={e => setSelectedArtist(e.target.value)}>
+              {artists.map(a => (
+                <option key={a} value={a}>
+                  {a}
+                </option>
+              ))}
+            </select>
+            <Chart songData={songData} selectedArtist={selectedArtist} />
+          </>
+        )}
       </main>
 
       <footer></footer>
