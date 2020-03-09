@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import FileUploader from '../components/FileUploader';
+
 const Home = () => (
   <div>
     <Head>
@@ -8,7 +10,9 @@ const Home = () => (
       <link rel='icon' href='/favicon.ico' type='image/x-icon' />
     </Head>
 
-    <main></main>
+    <main>
+      <FileUploader />
+    </main>
 
     <footer></footer>
   </div>
