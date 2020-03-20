@@ -1,6 +1,6 @@
 https://prelude.now.sh/
 
-## Read more about the inspiration behind this app here:
+## Inspiration
 
 https://medium.com/@dylankershaw/my-spotify-life-in-review-7d61965aac0c
 
