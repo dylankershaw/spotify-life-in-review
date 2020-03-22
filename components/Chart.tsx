@@ -1,19 +1,27 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Chart from 'chart.js';
+import {Song, ChartData} from '../Types';
 
-export default ({songData, selectedArtist}) => {
-  const [chartData, setChartData] = useState([]);
+interface Props {
+  songData: Array<Song>;
+  selectedArtist: string;
+}
+
+const ChartComponent: React.FC<Props> = ({songData, selectedArtist}) => {
+  const [chartData, setChartData] = useState<ChartData>({});
   const [fullPlaysOnly, setFullPlaysOnly] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (!selectedArtist) return setChartData([]);
+    if (!selectedArtist) return setChartData({});
 
-    let songs = songData.filter(s => s.master_metadata_album_artist_name?.includes(selectedArtist));
+    let songs = songData.filter((s: Song) =>
+      s.master_metadata_album_artist_name?.includes(selectedArtist)
+    );
 
     if (fullPlaysOnly) songs = songs.filter(({reason_end}) => reason_end === 'trackdone');
 
-    const data = songs.reduce((acc, cur) => {
+    const data = songs.reduce((acc: ChartData, cur) => {
       const date = cur.ts.split(' ')[0];
       return {...acc, [date]: (acc[date] || 0) + 1};
     }, {});
@@ -22,9 +30,10 @@ export default ({songData, selectedArtist}) => {
   }, [songData, selectedArtist, fullPlaysOnly]);
 
   useEffect(() => {
-    const myChartRef = ref.current.getContext('2d');
+    const chartRef = ref?.current?.getContext('2d');
+    if (!chartRef) return;
 
-    new Chart(myChartRef, {
+    new Chart(chartRef, {
       type: 'line',
       data: {
         labels: Object.keys(chartData).reverse(),
@@ -54,3 +63,5 @@ export default ({songData, selectedArtist}) => {
     </div>
   );
 };
+
+export default ChartComponent;

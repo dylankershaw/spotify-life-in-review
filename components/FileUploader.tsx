@@ -1,11 +1,17 @@
 import React, {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
+import {Song} from '../Types';
 
-const FileUploader = ({setSongData}) => {
+interface Props {
+  setSongData(songs: Array<Song>): void;
+}
+
+const FileUploader: React.FC<Props> = ({setSongData}) => {
   const onDrop = useCallback(([file]) => {
     const reader = new FileReader();
 
     reader.onload = () => {
+      if (typeof reader.result !== 'string') return;
       const songs = JSON.parse(`[${reader.result.replace(/\n/g, ',')}]`);
       setSongData(songs);
     };
