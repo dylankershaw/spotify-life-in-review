@@ -2,6 +2,8 @@ import React, {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
 import {Song} from '../Types';
 
+import {breakpoints, colors} from '../theme';
+
 interface Props {
   setSongData(songs: Array<Song>): void;
 }
@@ -22,11 +24,35 @@ const FileUploader: React.FC<Props> = ({setSongData}) => {
   const {getRootProps, getInputProps} = useDropzone({onDrop, accept: 'application/json, .json'});
 
   return (
-    <div>
-      <div {...getRootProps()}>
+    <div className='container'>
+      <button {...getRootProps()}>
         <input {...getInputProps()} />
-        <p>Click to upload (.json only)</p>
-      </div>
+        <p>UPLOAD</p>
+      </button>
+      <p>(EndSong.json only please)</p>
+      <style jsx>
+        {`
+          .container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            width: fit-content;
+          }
+
+          @media screen and (min-width: ${breakpoints.sm}) .container {
+            margin: initial;
+          }
+
+          button {
+            background: ${colors.green};
+            border: none;
+            border-radius: 1rem;
+            color: white;
+            margin-top: 2rem;
+            padding: 0.5rem;
+          }
+        `}
+      </style>
     </div>
   );
 };

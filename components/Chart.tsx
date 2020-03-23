@@ -1,6 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
-import Chart from 'chart.js';
+
 import {Song, ChartData} from '../Types';
+import {colors} from '../theme';
+import Chart from 'chart.js';
 
 interface Props {
   songData: Array<Song>;
@@ -40,18 +42,16 @@ const ChartComponent: React.FC<Props> = ({songData, selectedArtist}) => {
         datasets: [
           {
             label: 'Songs Played',
-            data: Object.values(chartData).reverse()
+            data: Object.values(chartData).reverse(),
+            borderColor: colors.green
           }
         ]
-      },
-      options: {
-        //Customize chart options
       }
     });
   }, [chartData]);
 
   return (
-    <div>
+    <div className='container'>
       <input
         id='full-plays-only'
         type='checkbox'
@@ -60,6 +60,15 @@ const ChartComponent: React.FC<Props> = ({songData, selectedArtist}) => {
       />
       <label htmlFor='full-plays-only'>Only include songs played in full</label>
       <canvas id='myChart' ref={ref} />
+      <style jsx>{`
+        .container {
+          margin-top: 0.5rem;
+        }
+
+        canvas {
+          margin-top: 2rem;
+        }
+      `}</style>
     </div>
   );
 };
