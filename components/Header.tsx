@@ -12,7 +12,7 @@ const Header = () => {
         <a href='https://support.spotify.com/us/contact-spotify-support/'>
           contacting customer support
         </a>{' '}
-        and requesting a copy of your lifetime listening data.
+        and requesting your lifetime listening data.
       </div>
       <style jsx>{`
         h1 {
