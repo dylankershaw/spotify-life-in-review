@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <h1>
+    Visualize your lifetime listening data.
+  </h1>
+  <div
+    class="description"
+  >
+    To use this app, you'll first need a copy of your EndSong.json file from Spotify. You can obtain this by
+     
+    <a
+      href="https://support.spotify.com/us/contact-spotify-support/"
+    >
+      contacting customer support
+    </a>
+     
+    and requesting your lifetime listening data.
+  </div>
+  <style>
+    
+        h1 {
+          color: #1DB954;
+        }
+
+        .description {
+          margin-top: 1rem;
+        }
+      
+  </style>
+</div>
+`;
