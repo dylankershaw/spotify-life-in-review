@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <input
+      id="full-plays-only"
+      type="checkbox"
+    />
+    <label
+      for="full-plays-only"
+    >
+      Only include songs played in full
+    </label>
+    <canvas
+      class="chartjs-render-monitor"
+      height="0"
+      id="myChart"
+      style="display: block;"
+      width="0"
+    />
+    <style>
+      
+        .container {
+          margin-top: 0.5rem;
+        }
+
+        canvas {
+          margin-top: 2rem;
+        }
+      
+    </style>
+  </div>
+</div>
+`;

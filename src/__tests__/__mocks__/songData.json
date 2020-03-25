@@ -1,0 +1,17 @@
+[
+  {
+    "master_metadata_album_artist_name": "AC/DC",
+    "reason_end": "trackdone",
+    "ts": "2020-01-26 21:00:00 UTC"
+  },
+  {
+    "master_metadata_album_artist_name": "The Doors",
+    "reason_end": "trackdone",
+    "ts": "2020-01-27 22:00:00 UTC"
+  },
+  {
+    "master_metadata_album_artist_name": "The Doors",
+    "reason_end": "endplay",
+    "ts": "2020-01-27 23:00:00 UTC"
+  }
+]

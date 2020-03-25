@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    Select an artist:
+    <select>
+      <option
+        value="The Who"
+      >
+        The Who
+      </option>
+      <option
+        value="The Doors"
+      >
+        The Doors
+      </option>
+      <option
+        value="Lou Reed"
+      >
+        Lou Reed
+      </option>
+    </select>
+    <style>
+      
+          .container {
+            margin-top: 2rem;
+          }
+
+          select {
+            background-color: #1DB954;
+            border-radius: 1rem;
+            color: white;
+            display: block;
+            max-width: 100%;
+          }
+        
+    </style>
+  </div>
+</div>
+`;

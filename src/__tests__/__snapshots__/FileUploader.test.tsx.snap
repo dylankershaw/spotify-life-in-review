@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <button
+      tabindex="0"
+    >
+      <input
+        accept="application/json, .json"
+        autocomplete="off"
+        multiple=""
+        style="display: none;"
+        tabindex="-1"
+        type="file"
+      />
+      <p>
+        UPLOAD
+      </p>
+    </button>
+    <p>
+      (EndSong.json only please)
+    </p>
+    <style>
+      
+          .container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            width: fit-content;
+          }
+
+          @media screen and (min-width: 48rem) .container {
+            margin: initial;
+          }
+
+          button {
+            background: #1DB954;
+            border: none;
+            border-radius: 1rem;
+            color: white;
+            margin-top: 2rem;
+            padding: 0.5rem;
+          }
+        
+    </style>
+  </div>
+</div>
+`;
