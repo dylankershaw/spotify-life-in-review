@@ -1,5 +1,4 @@
 import React, {useCallback} from 'react';
-import {useDropzone} from 'react-dropzone';
 import {Song} from '../Types';
 
 import {breakpoints, colors} from '../theme';
@@ -9,7 +8,7 @@ interface Props {
 }
 
 const FileUploader: React.FC<Props> = ({setSongData}) => {
-  const onDrop = useCallback(([file]) => {
+  const handleDrop = useCallback(e => {
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -23,38 +22,38 @@ const FileUploader: React.FC<Props> = ({setSongData}) => {
       setSongData(songs);
     };
 
-    reader.readAsText(file);
+    reader.readAsText(e.target.files[0]);
   }, []);
-
-  const {getRootProps, getInputProps} = useDropzone({onDrop, accept: 'application/json, .json'});
 
   return (
     <div className='container'>
-      <button {...getRootProps()}>
-        <input {...getInputProps()} />
-        <p>UPLOAD</p>
-      </button>
-      <p>(EndSong.json only please)</p>
+      <label htmlFor='upload-input'>UPLOAD</label>
+      <span className='small-text'>(EndSong.json only please)</span>
+      <input id='upload-input' type='file' accept='application/json,.json' onChange={handleDrop} />
       <style jsx>
         {`
           .container {
+            align-items: center;
             display: flex;
             flex-direction: column;
-            margin: 0 auto;
+            margin: 2rem auto 0;
             width: fit-content;
           }
-
+          
           @media screen and (min-width: ${breakpoints.sm}) .container {
             margin: initial;
           }
 
-          button {
+          input {
             background: ${colors.green};
             border: none;
             border-radius: 1rem;
             color: white;
-            margin-top: 2rem;
             padding: 0.5rem;
+          }
+
+          .small-text {
+            font-size: 0.8rem;
           }
         `}
       </style>
