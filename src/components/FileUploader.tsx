@@ -14,7 +14,12 @@ const FileUploader: React.FC<Props> = ({setSongData}) => {
 
     reader.onload = () => {
       if (typeof reader.result !== 'string') return;
-      const songs = JSON.parse(`[${reader.result.replace(/\n/g, ',')}]`);
+
+      const jsonIsLineDelimited = reader.result.indexOf('},') === -1;
+      const songs = JSON.parse(
+        jsonIsLineDelimited ? `[${reader.result.replace(/\n/g, ',')}]` : reader.result
+      );
+
       setSongData(songs);
     };
 
